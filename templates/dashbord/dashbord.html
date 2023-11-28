@@ -1,0 +1,323 @@
+{% extends 'dashbord/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <style>
+        /* Spinner */
+        #spinner {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: text-bottom;
+            border: .25em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner-border .75s linear infinite;
+            animation: spinner-border .75s linear infinite;
+        }
+
+        @-webkit-keyframes spinner-border {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner-border {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+    </style>
+    <style>
+        /* Existing styles ... */
+
+        /* Glowing text effect (green) */
+        .navbar-brand.bright-glow {
+            position: relative;
+            font-size: 1.5em;
+            transition: color 0.3s ease-in-out;
+            color: #00FF00; /* Set the initial color to green */
+        }
+
+        .navbar-brand.bright-glow:hover {
+            color: white;
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Green shadow */
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 0.8); /* Stronger green shadow */
+            }
+        }
+    </style>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set a light background color */
+            font-family: 'Arial', sans-serif; /* Use a professional and widely supported font */
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #video-stream {
+            position: relative;
+        }
+
+        #spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item a {
+            margin-left: 10px;
+        }
+    </style>
+
+   <style>
+    /* Container styling */
+    .custom-container {
+        border: 2px solid #007bff; /* Bootstrap primary color for border */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px; /* Add padding for content */
+        margin-top: 20px; /* Adjust margin as needed */
+        background-color: #f8f9fa; /* Light background color */
+    }
+        /* Container styling */
+    .custom-container1 {
+        border: 2px solid #007bff; /* Bootstrap primary color for border */
+        border-radius: 15px; /* Rounded corners */
+        padding: 20px; /* Add padding for content */
+        margin-top: 20px; /* Adjust margin as needed */
+        background-color: #f8f9fa; /* Light background color */
+    }
+
+    /* Video stream styling */
+    #video-stream {
+        border: 2px solid #28a745; /* Bootstrap success color for border */
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden; /* Hide overflowing content */
+    }
+
+    /* Spinner styling */
+    #spinner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    }
+
+    .spinner {
+        border: 6px solid #53529b; /* Bootstrap success color for spinner */
+        border-top: 6px solid #bb2cb3; /* Bootstrap primary color for spinner */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite; /* Rotate animation */
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Spinner Jeff Omondi*/
+        #spinner {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: text-bottom;
+            border: .25em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner-border .75s linear infinite;
+            animation: spinner-border .75s linear infinite;
+        }
+
+        @-webkit-keyframes spinner-border {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner-border {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .glow:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+    </style>
+
+<div class="container custom-container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>{{ running }}</h3>
+            <h3 class="text-primary" id="word_label">{{ word_label }}</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="embed-responsive embed-responsive-16by9" id="video-stream">
+                <img class="embed-responsive-item rounded img-fluid" src="{% url 'video_feed' %}">
+               <div id="spinner" style="display: '''html;">
+                            <div class="spinner bg-info h1"></div>
+                        </div>
+            </div>
+        </div>
+
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6 container custom-container1">
+            <div class="btn-group">
+                <a href="{% url 'toggle_process' %}" class="btn btn-success rounded-pill">
+                    <span id="start_button_icon">
+                        {% if running %}
+                            <i class="fas fa-stop"></i> Stop
+                        {% else %}
+                            <i class="fas fa-play"></i> Start
+                        {% endif %}
+                    </span>
+                </a>
+                <a href="{% url 'clear_word' %}" class="btn btn-danger rounded-pill text-white" onclick="clearWord()">
+                    <i class="fas fa-trash"></i> Clear
+                </a>
+                <form method="post" action="{% url 'save_recognized_alphabets' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary rounded-pill">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+      </div>
+</div>
+
+<style>
+    .container {
+        margin-top: 10px;
+    }
+
+    .list-group {
+        width: 100%;
+    }
+
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        transition: background-color 0.3s;
+    }
+
+    .list-group-item:hover {
+        background-color: #f8f9fa; /* Lighter background on hover */
+    }
+
+    .list-group-item-info {
+        background-color: #d1ecf1; /* Info color for the list item */
+        border-color: #bee5eb;
+    }
+
+    .list-group-item-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .list-group-item-buttons button {
+        width: 100px; /* Adjust the width of the buttons */
+    }
+
+    .btn-delete {
+        background-color: #dc3545; /* Bootstrap danger color for delete button */
+        color: #fff;
+    }
+
+    .btn-pay {
+        background-color: #007bff; /* Bootstrap primary color for pay button */
+        color: #fff;
+    }
+</style>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyOZdV9HRvZXhU1amoDZ3fE249M6Z4M" crossorigin="anonymous">
+
+    <section class="services mt-5" style="padding: 10px">
+    <ul class="list-group">
+        {% for recognized_alphabet in recognized_alphabets|slice:":20" %}
+            <li class="list-group-item {{ color }}">
+                {{ recognized_alphabet.alphabet }}
+                <div class="list-group-item-buttons">
+                    <form method="post" action="{% url 'delete' recognized_alphabet.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger btn-delete">Delete</button>
+                    </form>
+                    <a href="{% url 'pay' recognized_alphabet.id %}" class="btn btn-outline-primary btn-pay">Pay To Download</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+    <script>
+        function clearWord() {
+            $.ajax({
+                url: "{% url 'clear_word' %}",
+                success: function (response) {
+                    $("#word_label").text("Recognized Alphabets:");
+                }
+            });
+        }
+
+        function receiveWord(event) {
+            var word = event.data.trim();
+            if (word) {
+                $("#word_label").text("Recognized Alphabets: " + word);
+            }
+        }
+
+        var source = new EventSource("{% url 'video_feed' %}");
+        source.onmessage = receiveWord;
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-dpJyP1zAp3MOldoOl5R58zRXP0E9PYX1cXgdeby/7PjXGNu5N/gfDpNz64G4z1Y" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyOZdV9HRvZXhU1amoDZ3fE249M6Z4M" crossorigin="anonymous"></script>
+
+{% endblock %}

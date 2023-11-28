@@ -1,0 +1,41 @@
+<!-- pages-contact.html -->
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+    <main id="main" class="main">
+        <div class="pagetitle text-center">
+            <h1 class="text-center">Contact</h1>
+            {% if sent_message %}
+                <div class="alert alert-success" role="alert">
+                    {{ sent_message }}
+                </div>
+            {% endif %}
+        </div><!-- End Page Title -->
+        <section class="section contact">
+            <div class="row gy-4">
+                <div class="col-xl-4"></div>
+                <div class="col-xl-4">
+                    <div class="card p-4">
+                        <!-- Your existing form -->
+
+                        <!-- Display existing messages -->
+                        {% if messages %}
+                            <div class="message-list">
+                                <h3>Previous Messages:</h3>
+                                <ul>
+                                    {% for msg in messages %}
+                                        <li>
+                                            <strong>{{ msg.name }}:</strong>
+                                            <p>{{ msg.message }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-xl-4"></div>
+            </div>
+        </section>
+    </main><!-- End #main -->
+{% endblock %}

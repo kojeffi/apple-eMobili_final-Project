@@ -1,0 +1,345 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br>
+    <div class="container mt-5 text-center" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;">
+        <p class="mt-4">
+            You've logged out!!! <a href="{% url 'login-url' %}">Login again</a>
+        </p>
+    </div>
+    <br><br><br>
+     <main id="main">
+
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about" style="background-color: #f4f4f4;border-radius: 20px 30px 50px 40px">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h3>About Us</h3>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-6">
+                        <p class="text-muted text-dark">
+                            Sign Language and Hand Gestures Using CNN is a cutting-edge website that employs Convolutional Neural Networks (CNN) to recognize and interpret sign language and hand gestures. Our mission is to bridge communication gaps and empower individuals with hearing impairments by providing an intuitive and accessible communication platform.
+                        </p>
+                        <p class="text-muted">
+                            Leveraging computer vision techniques, our system captures and analyzes hand movements with precision, allowing for accurate translation of sign language alphabets and gestures into text or speech. This technology revolutionizes communication for both those who use sign language and those who are not familiar with it.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <p class="text-muted">
+                            Our user-friendly interface offers real-time sign language recognition through webcam or camera-enabled devices. This technology-driven platform facilitates seamless interaction and fosters a deeper understanding between diverse communities.
+                        </p>
+                        <p class="text-muted">
+                            With a commitment to advancing sign language recognition and promoting inclusivity, we invite you to join us in making communication accessible to all. Together, we can create a world where technology bridges the gap and empowers individuals with hearing impairments to express themselves effortlessly.
+                        </p>
+                        <p class="text-muted">
+                            <i>Empower. Communicate. Inclusivity.</i>
+                        </p>
+                        <a href="#" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Us Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services section-bg" style="background-color: #82a7bf;">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title" style="color: #fff">
+                    <h3>Services</h3>
+                    <p>A Sign Language and Hand Gesture Recognition System utilizing Convolutional Neura
+                        l Networks (CNN) is designed to bridge the communication gap between the deaf
+                        and hearing communities.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box rounded-pill">
+                            <div class="service-item text-center">
+                                <i class="fas fa-camera service-icon fa-3x"></i>
+                                <h3 class="service-title">Real-time Gesture Recognition</h3>
+                                <p class="service-description">Our system uses CNN to recognize hand gestures in real-time, enabling communication with individuals who use sign language.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box rounded">
+                            <div class="service-item text-center">
+                                <i class="fas fa-american-sign-language-interpreting service-icon fa-3x"></i>
+                                <h3 class="service-title">Sign Language Translation</h3>
+                                <p class="service-description">We provide sign language
+                                    translation services, converting sign language gestures into
+                                    written or spoken language for effective communication.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon-box rounded-pill">
+                            <div class="service-item text-center">
+                                <i class="fas fa-clipboard-list service-icon fa-3x"></i>
+                                <h3 class="service-title">Gesture Recognition Training</h3>
+                                <p class="service-description">We offer training programs for individuals interested in learning how to recognize and interpret hand gestures using CNN-based models.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Services Section -->
+        <style>
+    .image-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .image-container:hover .img-responsive {
+        opacity: 0.7;
+    }
+
+    img {
+        width: 100%; /* Set the width to 100% to make images responsive within their containers */
+        height: 30vh; /* Maintain the aspect ratio of the images */
+        border-radius: 80px 0 80px 0;
+    }
+
+    .gallery-grid {
+        margin-bottom: 20px;
+    }
+
+    .textbox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 24px;
+    }
+</style>
+
+<!-- ======= Services Section ======= -->
+<section id="gallery" class="gallery section-bg" style="background-color: #4db47e;">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title">
+            <h3 class="text-white">Gallery</h3>
+            <div class="row">
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 1">
+                            <img src="{% static 'images/image.jpg' %}" alt="Image 1">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image2.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/mu.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 1">
+                            <img src="{% static 'images/mu.jpg' %}" alt="Image 1">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/ku.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/ku.jpg' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                           <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/jeff.png' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/jeff.png' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/jeff.png' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/jeff.png' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image1.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 1">
+                            <img src="{% static 'images/image1.jpg' %}" alt="Image 1">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image2.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    <div class="row">
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 1">
+                            <img src="{% static 'images/image.jpg' %}" alt="Image 1">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image2.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                        <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 1">
+                            <img src="{% static 'images/image.jpg' %}" alt="Image 1">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 gallery-grid">
+                    <div class="image-container">
+                        <a href="{% static 'images/image2.jpg' %}" class="swipebox img-fluid img-responsive" title="Image 2">
+                            <img src="{% static 'images/image2.jpg' %}" alt="Image 2">
+                            <div class="textbox">
+                                <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Add similar blocks for other images -->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team section-bg" style="background-color: #be9d99;">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h3 class="text-white">Team</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="pic"><img src="{% static 'images/img6.jpg'%}" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Omondi Jeff </h4>
+                                <span>Chief Executive Officer</span>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pic"><img src="{% static 'images/image6.jpeg'%}" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Olivia Mwikali</h4>
+                                <span>Software Engineer</span>
+
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="pic"><img src="{% static 'images/image5.jpg'%}" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Jeff Olie</h4>
+                                <span>Data Scientists</span>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="pic"><img src="{% static 'images/image4.jpg'%}" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Olie Jeffy</h4>
+                                <span>Cybersecurity Engineer</span>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+
+    </main><!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'dashbord/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container mt-5">
+    {% if payment_successful %}
+      <div class="alert alert-success" role="alert">
+        Payment request successful! You can now download the PDF.
+      </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">Pay for PDF Download</h2>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="amount">Total Amount:</label>
+            <input name="price" value="{{ recognized_alphabets.price }}" class="form-control" readonly type="text">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" value="{{ recognized_alphabets.price }}" name="phone" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-info mt-4">Pay and Download</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

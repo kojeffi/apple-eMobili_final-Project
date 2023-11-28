@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Language and Hand Gestures</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Your custom stylesheet -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'css/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'css/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/assets/css/style.css' %}" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        #video-stream {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        .spinner {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: text-bottom;
+            border: .25em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner-border .75s linear infinite;
+            animation: spinner-border .75s linear infinite;
+        }
+
+        @-webkit-keyframes spinner-border {
+            to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+
+        @keyframes spinner-border {
+            to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+        /* Add this style to make the text glow */
+        .glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery (required for Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js (required for Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+    .nav-link-dropdown {
+        position: relative;
+    }
+
+    .nav-link-dropdown .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .nav-link-dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+</style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top text-dark" style="background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+    <div class="container d-flex align-items-center text-dark">
+        <h4 class="me-auto text-dark scrollto">
+            <a class="text-white text-decoration-none" href="#">
+                    <i class="text-dark">SignLanguage</i>
+            </a>
+        </h4>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link text-dark scrollto active" href="{% url 'home-url' %}">Home</a></li>
+                <li><a class="nav-link text-dark scrollto" href="#about">About</a></li>
+                <li><a class="nav-link text-dark scrollto" href="#gallery">Gallery</a></li>
+                <li><a class="nav-link text-dark scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link text-dark scrollto" href="#team">Team</a></li>
+                <li><a class="nav-link text-dark scrollto" href="{% url 'registration-url' %}">
+                    <i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a class="nav-link text-dark scrollto" href="{% url 'login-url' %}">
+                    <i class="fas fa-user-plus"></i> Login</a></li>
+                <li><a class="nav-link text-dark scrollto" href="{% url 'contact-url' %}">Contact</a></li>
+
+                <li><a class="getstarted scrollto text-white text-decoration-none glow btn btn-primary" href="#">Get started</a></li>
+                <li>
+
+                    <!-- Update your HTML to include the dropdown structure -->
+                    <ul>
+                        <li class="nav-link-dropdown">
+                            <a class="nav-link scrollto text-dark" href="#">
+                                <i class="fas fa-user-plus"></i>Admin use only
+                            </a>
+                            <div class="dropdown-content">
+                                {#                            <a href="{% url 'register_admin-url' %}">Registration</a>#}
+                                <a href="{% url 'login_admin-url' %}">
+                                    <i class="fas fa-user"></i>Admin Login</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+                <!-- ... your existing body content ... -->
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
+</header><!-- End Header -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyOZdV9HRvZXhU1amoDZ3fE249M6Z4M" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-dpJyP1zAp3MOldoOl5R58zRXP0E9PYX1cXgdeby/7PjXGNu5N/gfDpNz64G4z1Y" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyOZdV9HRvZXhU1amoDZ3fE249M6Z4M" crossorigin="anonymous"></script>
+
+
+<!-- ======= Hero Section ======= -->
+<br><br><br><br>
+{% block content %}
+
+{% endblock %}
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'css/assets/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'css/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'css/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'css/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'css/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'css/assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+<script src="{% static 'css/assets/vendor/php-email-form/validate.js' %}"></script>
+<!-- Add the Font Awesome CDN for social media icons -->
+<!-- Template Main JS File -->
+<script src="{% static 'css/assets/js/main.js' %}"></script>
+<script src="{% static 'css/assets/js/main.js' %}"></script>
+<footer class="rounded footer text-dark" style="background-color: #f8f9fa; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; padding: 20px;">
+    <div class="row" style="padding-left: 10px;">
+        <div class="col-md-4">
+            <h4 class="text-dark"><b>About Us</b></h4>
+            <p class="text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-md-4">
+            <!-- Add mission and vision statements -->
+            <p class="text-dark">
+            <h4><b>Mission</b></h4> <br>To empower individuals through the recognition of sign language and hand gestures using cutting-edge CNN technology.
+            </p>
+            <p class="text-dark">
+            <h4><b>Vision</b></h4> <br>Creating a world where communication is barrier-free for everyone, regardless of their abilities.
+            </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook text-info h1"></i></a><br>
+                <a href="#" target="_blank"><i class="fab fa-twitter text-primary h1"></i></a><br>
+                <a href="#" target="_blank"><i class="fab fa-linkedin text-info h1"></i></a><br>
+                <a href="#" target="_blank"><i class="fab fa-instagram text-danger h1"></i></a><br>
+            </div>
+        </div>
+        <hr>
+        <div class="text-dark rounded" >
+            <h4 class="text-center"><b>&copy; 2023 Sign Language And Hand Gestures Recognition System Using CNN. All rights reserved.</b></h4>
+            <p class="text-center"> Designed by Full Stack Developer from eMobilis: Omondi Jeff</p>
+        </div>
+    </div>
+</footer>
+
+{#<!-- Add a CSS rule for the 'glow' class -->#}
+{#<style>#}
+{#    .glow {#}
+{#        /* Add your styles for the glowing effect */#}
+{#        /* Example: box-shadow and animation */#}
+{#        box-shadow: 0 0 10px #00ff00;#}
+{#        animation: glowAnimation 1s infinite alternate;#}
+{#    }#}
+{##}
+{#    @keyframes glowAnimation {#}
+{#        from {#}
+{#            box-shadow: 0 0 10px #00ff00;#}
+{#        }#}
+{#        to {#}
+{#            box-shadow: 0 0 20px #00ff00;#}
+{#        }#}
+{#    }#}
+{#</style>#}
+</body>
+</html>

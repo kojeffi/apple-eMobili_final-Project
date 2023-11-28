@@ -1,0 +1,252 @@
+{% extends 'dashboard/master.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    Hello, {{ username }}! <a href="{% url 'logout_admin-url' %}">Logout</a>
+{% else %}
+    Welcome to the Admin App! <a href="{% url 'login_admin-url' %}">Login</a>
+{% endif %}
+
+        <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery (required for Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Popper.js (required for Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="{% url 'admin-url' %}" class="logo d-flex align-items-center">
+            <img src="{% static 'dashboard/assets/img/logo.png'%}" alt="">
+            <span class="d-none d-lg-block">Sign Language Admin</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+{#    <div class="search-bar">#}
+{#        <form class="search-form d-flex align-items-center" method="POST" action="#">#}
+{#            <input type="text" name="query" placeholder="Search" title="Enter search keyword">#}
+{#            <button type="submit" title="Search"><i class="bi bi-search"></i></button>#}
+{#        </form>#}
+{#    </div><!-- End Search Bar -->#}
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-bell"></i>
+                    <span class="badge bg-primary badge-number">{{ user_count }}</span>
+                </a><!-- End Notification Icon -->
+
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header">
+                        You have {{ user_count }} registered users
+                        <a href="{% url 'forms_elements-url' %}"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                    </li>
+                    <!-- ... rest of your code ... -->
+                </ul><!-- End Notification Dropdown Items -->
+
+            </li><!-- End Notification Nav -->
+
+
+
+            <li class="nav-item dropdown pe-3">
+
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="{% static 'images/img6.jpg'%}" alt="Profile" class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2">
+                {% if user.is_authenticated %}
+                    Welcome, {{ user.get_username }}!
+                {% else %}
+                    Welcome, guest!
+                {% endif %}
+
+            </span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="{% url 'home-url' %}">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " href="{% url 'admin-url' %}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-people"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{% url 'forms_elements-url' %}">
+                        <i class="bi bi-person-add"></i><span>Registered Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'forms_elements-url' %}">
+                        <i class="bi bi-person-dash"></i><span>Update Users</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Forms Nav -->
+
+
+        <li class="nav-heading">Pages</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'contact-url' %}">
+                <i class="bi bi-envelope"></i>
+                <span>Messages</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'registration-url' %}">
+                <i class="bi bi-card-list"></i>
+                <span>Register User</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'login-url' %}">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login User</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+    </ul>
+
+</aside><!-- End Sidebar-->
+
+
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-12">
+                <div class="row">
+                       <section class="d-flex align-items-center img-responsive" style="min-height: 90vh; background-image: url({% static 'images/hand-drawn-sketch-finger-spelling-260nw-1156746655.webp' %}); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="text-warning"><b>Better Solutions for Individuals with Hearing Impairments or Deafness</b></h2>
+                    <h6 class="text-info">The System is Designed to Recognize Gestures</h6>
+                    <div class="d-flex justify-content-center justify-content-lg-start">
+                        <a class="getstarted scrollto  text-dark text-decoration-none " href="#about">
+                            <button class="btn btn-primary rounded-pill">Get Started</button></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+
+                    <div class="container" data-aos="fade-up">
+                        <div id="servicesCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner text-white">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="icon-box">
+                                            <div class="service-item text-center">
+                                                <i class="fas fa-camera service-icon fa-3x text-warning"></i>
+                                                <h2 class="service-title text-white"><b>Real-time Gesture Recognition</b></h2>
+                                                <p class="service-description text-info"><b>Our system uses CNN to recognize hand gestures in real-time, enabling communication with individuals who use sign language.</b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="icon-box">
+                                            <div class="service-item text-center">
+                                                <i class="text-warning fas fa-american-sign-language-interpreting service-icon fa-3x"></i>
+                                                <h2 class="service-title text-white"><b>Sign Language Translation</b></h2>
+                                                <p class="service-description text-info"><b>We provide sign language translation services, converting sign language gestures into written or spoken language for effective communication.
+                                                </b></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="icon-box">
+                                            <div class="service-item text-center">
+                                                <i class="text-warning fas fa-clipboard-list service-icon fa-3x"></i>
+                                                <h2 class="service-title text-white"><b>Gesture Recognition Training</b></h2>
+                                                <p class="service-description text-info"><b>We offer training programs for individuals interested in learning how to recognize and interpret hand gestures using CNN-based models.
+                                            </b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#servicesCarousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#servicesCarousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+    </section><!-- End Hero -->
+                </div>
+            </div>
+        </div>
+    </section>
+</main><!-- End #main -->
+{% endblock %}

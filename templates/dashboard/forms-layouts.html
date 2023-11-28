@@ -1,0 +1,53 @@
+{% extends 'dashboard/master.html' %}
+{% load static %}
+{% block content %}
+    <main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+    <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12">
+            <div class="row">
+
+
+
+                <!-- Top Selling -->
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+
+                        <form method="post" action="{% url 'update_user' user.id %}">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend class="border-bottom mb-4">Updating User </legend>
+                                <input value="{{ user.username }}" placeholder="Your username"  name="username" type="text">
+                                <input value="{{ user.email }}" placeholder="Your Email"  name="email" type="text">
+                                <input value="{{ user.password }}" placeholder="Your Password" name="password" type="text">
+                                <br>
+                            </fieldset>
+                            <div class="form-group">
+                                <input class="btn btn-info mt-4" value="Update" type="submit">
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div><!-- End Top Selling -->
+
+    </div>
+    </section>
+    </main>
+{% endblock %}
